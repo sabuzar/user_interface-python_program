@@ -52,8 +52,8 @@ radiobtn4 = ttk.Radiobutton(window,text='Businessman', value='Businessman', vari
 radiobtn4.grid(row=4, column=3)
 
 
-checkbtn_var = tk.IntVar()
-checkbtn = ttk.Checkbutton(window, text='check if you want to subcribed', variable=checkbtn_var)
+user_sub = tk.IntVar(0)
+checkbtn = ttk.Checkbutton(window, text='check if you want to subcribed', variable=user_sub)
 checkbtn.grid(row=5, columnspan=3, sticky=tk.W)
 
 
@@ -62,17 +62,17 @@ def action():
     Username=name_var.get()
     Userage=age_var.get()
     Useremail=email_var.get()
-    print(f"{Username} is {Userage} years old and his/her email, is {Useremail}")
+    print(f"{Username} is {Userage} years old and his/her email, is {Useremail} his gender is  ")
     user_gender = gender_var.get()
     user_type = usertype.get()
-    if checkbtn_var.get() == 0:
-        submit = 'NO'
+    if user_sub.get() == 0:
+        subcribed = 'NO'
     else:
-        submit = 'YES'
-    print(user_gender, user_type, subcribed )
+        subcribed = 'YES'
+    print(user_gender, user_type, user_sub )
 
     with open('file.txt', 'a') as f:
-        f.write(f'{name_var},{age_var}, {email_var} ,{gender_var} ,{user_type} ,{subcribed}\n')
+         f.write(f'{name_var},{age_var}, {email_var} ,{gender_var} ,{user_type} ,{checkbtn }\n')
 
 
 submit_button = ttk.Button(window, text='Submit', command=action).grid(row=6, column=0, sticky=tk.W)
